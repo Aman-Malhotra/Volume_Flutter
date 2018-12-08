@@ -28,9 +28,7 @@ AudioManager.STREAM_NOTIFICATION     -> Controll NOTIFICATION Volume
 
 **set volume for the selected stream as a parameter to controlVolume**
 
-// the vol will be set to the integer value sent as parameter. Max value of `i` is less than Volume.getMaxVol
-
-```await Volume.setVol(int i); ```
+```await Volume.setVol(int i); // Max value of `i` is less than Volume.getMaxVol```
 
 # Usage
 ```
