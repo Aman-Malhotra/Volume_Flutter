@@ -16,21 +16,21 @@ AudioManager.STREAM_NOTIFICATION     -> Controll NOTIFICATION Volume
 
 **your app will control this vol when in app**
 
-```Volume.controlVolume(AudioManager audioManager); // pass any stream as parameter```
+```await Volume.controlVolume(AudioManager audioManager); // pass any stream as parameter```
 
 **get maximum possible volume**
 
-```Volume.getMaxVol; // returns an integer```
+```await Volume.getMaxVol; // returns an integer```
 
 **get current volume level**
 
-```Volume.getVol;// returns an integer```
+```await Volume.getVol;// returns an integer```
 
 **set volume for the selected stream as a parameter to controlVolume**
 
 // the vol will be set to the integer value sent as parameter. Max value of `i` is less than Volume.getMaxVol
 
-```Volume.setVol(int i); ```
+```await Volume.setVol(int i); ```
 
 # Usage
 ```
