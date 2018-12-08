@@ -2,7 +2,7 @@ name: volume
 description: A new flutter plugin project.
 version: 0.0.1
 author: Aman Malhotra<official.aman18@gmail.com>
-homepage:
+homepage: https://github.com/aman-malhotra-1999/Volume_Flutter.git
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"

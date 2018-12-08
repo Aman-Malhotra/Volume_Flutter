@@ -1,6 +1,8 @@
 # volume
 
-A new flutter plugin project.
+This is a flutter volume Plugin which you can use to control the volumes in Android programatically.
+
+
 
 ## Getting Started
 

@@ -14,11 +14,6 @@ enum AudioManager {
 class Volume {
   static const MethodChannel _channel = const MethodChannel('volume');
 
-  static Future<String> setVolume() async {
-    await _channel.invokeMethod('setVolume');
-    return null;
-  }
-
   static Future<Null> controlVolume(AudioManager audioManager) async {
     Map<String, int> map = <String, int>{};
     map.putIfAbsent("streamType", () {
