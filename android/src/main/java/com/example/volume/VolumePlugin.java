@@ -42,7 +42,7 @@ public class VolumePlugin implements MethodCallHandler {
             int i = call.argument("streamType");
             streamType = i;
             controlVolume(i);
-        }  else if (call.method.equals("getMaxVol")) {
+        } else if (call.method.equals("getMaxVol")) {
             result.success(getMaxVol());
 //            getMaxVol();
         } else if (call.method.equals("getVol")) {
@@ -59,18 +59,22 @@ public class VolumePlugin implements MethodCallHandler {
     void controlVolume(int i) {
         this.activity.setVolumeControlStream(i);
     }
-    void initAudioManager(){
+
+    void initAudioManager() {
         audioManager = (AudioManager) this.activity.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
     }
-    int getMaxVol(){
+
+    int getMaxVol() {
         initAudioManager();
         return audioManager.getStreamMaxVolume(streamType);
     }
-    int getVol(){
+
+    int getVol() {
         initAudioManager();
         return audioManager.getStreamVolume(streamType);
     }
-    int setVol(int i){
+
+    int setVol(int i) {
         initAudioManager();
         audioManager.setStreamVolume(streamType, i, AudioManager.FLAG_SHOW_UI);
         return audioManager.getStreamVolume(streamType);
