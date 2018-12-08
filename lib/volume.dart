@@ -35,7 +35,6 @@ class Volume {
   static Future<int> setVol(int i) async {
     Map<String, int> map = <String, int>{};
     map.putIfAbsent("newVol", () {
-      print(i);
       return i;
     });
     int vol = await _channel.invokeMethod('setVol', map);
