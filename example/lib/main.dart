@@ -12,7 +12,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String _platformVersion = 'Unknown';
   AudioManager audioManager;
   int maxVol, currentVol;
 
@@ -26,14 +25,13 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> initPlatformState() async {
     await Volume.controlVolume(AudioManager.STREAM_SYSTEM);
-    setState((){});
   }
 
   updateVolumes() async {
+    // get Max Volume
     maxVol = await Volume.getMaxVol;
-    print(maxVol);
+    // get Current Volume
     currentVol = await Volume.getVol;
-    print(currentVol);
     setState(() {});
   }
 
@@ -55,6 +53,10 @@ class _MyAppState extends State<MyApp> {
               DropdownButton(
                 value: audioManager,
                 items: [
+                  DropdownMenuItem(
+                    child: Text("In Call Volume"),
+                    value: AudioManager.STREAM_VOICE_CALL,
+                  ),
                   DropdownMenuItem(
                     child: Text("System Volume"),
                     value: AudioManager.STREAM_SYSTEM,
