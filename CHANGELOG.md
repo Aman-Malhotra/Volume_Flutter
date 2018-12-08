@@ -1,4 +1,3 @@
-## 0.0.1
+## 0.0.2
 
-Control Android Volumes programatically.
-Updated Readme.md
+Updated Readme.md and removed unnecessary print statements
