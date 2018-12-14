@@ -15,6 +15,7 @@ class _MyAppState extends State<MyApp> {
   AudioManager audioManager;
   int maxVol, currentVol;
 
+  
   @override
   void initState() {
     super.initState();
