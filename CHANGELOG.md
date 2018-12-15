@@ -1,3 +1,11 @@
+## 0.0.8
+
+Added License.
+
+## 0.0.7
+
+Little change in docs.
+
 ## 0.0.6
 
 Added volUp button press and volDown button press from system_shortcuts plugin.
