@@ -30,6 +30,14 @@ AudioManager.STREAM_NOTIFICATION     -> Controll NOTIFICATION Volume
 
 > await Volume.setVol(int i); // Max value of i is less than Volume.getMaxVol
 
+### Press Volume Up button programatically 
+
+> Volume.volUp(); // press volUp key.
+
+### Press Volume Down button programatically 
+
+> Volume.volDown(); // press volDown key.
+
 # Usage
 ```
 class _MyAppState extends State<MyApp> {
@@ -58,6 +66,22 @@ class _MyAppState extends State<MyApp> {
   setVol(int i) async {
     await Volume.setVol(i);
   }
+  // To implement the volume Up and volume Down button press programatically.
+  // Consecutively increasing the volume by 1 unit.
+  FlatButton(
+    child: Text("Vol Up"),
+    onPressed: (){
+      Volume.volUp();
+      updateVolumes();
+    },
+  ),
+  FlatButton(
+    child: Text("Vol Down"),
+    onPressed: (){
+      Volume.volDown();
+      updateVolumes();
+    },
+  )
 ```
 
 ## Getting Started

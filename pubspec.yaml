@@ -1,6 +1,6 @@
 name: volume
 description: Volume plugin to control device VOLUME (Android only). Pull request for IOS implementation is welcome. 
-version: 0.0.5
+version: 0.0.6
 author: Aman Malhotra<official.aman18@gmail.com>
 homepage: https://github.com/aman-malhotra-1999/Volume_Flutter.git
 
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  system_shortcuts: ^0.0.4
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
