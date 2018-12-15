@@ -1,3 +1,8 @@
+## 0.0.6
+
+Added volUp button press and volDown button press from system_shortcuts plugin.
+
+
 ## 0.0.5
 
 Updated the dartDoc documentation in Volume.dart class.

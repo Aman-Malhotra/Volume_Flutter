@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
+import 'package:system_shortcuts/system_shortcuts.dart';
 
 /// AudioManager Streams control the type of volume the getVol and setVol fucntion will control.
 enum AudioManager {
@@ -84,6 +85,26 @@ class Volume {
     });
     int vol = await _channel.invokeMethod('setVol', map);
     return vol;
+  }
+
+  /// Press VolumeUp button programatically.
+  /// It returns a null.
+  /// 
+  /// Implementaion :- 
+  /// 
+  /// Volume.volUp()
+  static Future<Null> volUp() async{
+    await SystemShortcuts.volUp();
+  }
+
+  /// Press VolumeDown button programatically.
+  /// It returns a null.
+  /// 
+  /// Implementaion :- 
+  /// 
+  /// Volume.volDown()
+  static Future<Null> volDown() async{
+    await SystemShortcuts.volDown();
   }
 }
 
