@@ -1,12 +1,14 @@
 package com.example.volume;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
 
-import java.util.List;
+import androidx.annotation.NonNull;
 
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.embedding.engine.plugins.activity.ActivityAware;
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
@@ -16,24 +18,57 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 /**
  * VolumePlugin
  */
-public class VolumePlugin implements MethodCallHandler {
+public class VolumePlugin implements FlutterPlugin, ActivityAware, MethodCallHandler {
 
-    private final MethodChannel channel;
+    private MethodChannel channel;
     private Activity activity;
-    AudioManager audioManager;
+    private AudioManager audioManager;
     private int streamType;
 
     /**
-     * Plugin registration.
+     * v2 plugin embedding
      */
-    public static void registerWith(Registrar registrar) {
-        final MethodChannel channel = new MethodChannel(registrar.messenger(), "volume");
-        channel.setMethodCallHandler(new VolumePlugin(registrar.activity(), channel));
+    @Override
+    public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
+        channel = new MethodChannel(
+                        binding.getBinaryMessenger(), "volume");
+        channel.setMethodCallHandler(this);
     }
 
-    private VolumePlugin(Activity activity, MethodChannel channel) {
-        this.activity = activity;
-        this.channel = channel;
+    @Override
+    public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+        channel.setMethodCallHandler(null);
+        channel = null;
+    }
+
+    @Override
+    public void onAttachedToActivity(ActivityPluginBinding binding) {
+        activity = binding.getActivity();
+    }
+
+    @Override
+    public void onDetachedFromActivity() {
+        activity = null;
+    }
+
+    @Override
+    public void onReattachedToActivityForConfigChanges(ActivityPluginBinding binding) {
+        activity = binding.getActivity();
+    }
+
+    @Override
+    public void onDetachedFromActivityForConfigChanges() {
+        activity = null;
+    }
+
+    /**
+     * Deprecated plugin registration.
+     */
+    public static void registerWith(Registrar registrar) {
+        VolumePlugin instance = new VolumePlugin();
+        instance.channel = new MethodChannel(registrar.messenger(), "volume");
+        instance.activity = registrar.activity();
+        instance.channel.setMethodCallHandler(instance);
     }
 
     @Override
