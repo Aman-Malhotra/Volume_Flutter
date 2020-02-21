@@ -123,6 +123,8 @@ doc/api/
 .flutter-plugins-dependencies
 .pub-cache/
 .pub/
+flutter_export_environment.sh
+
 
 # Android related
 **/android/**/gradle-wrapper.jar
