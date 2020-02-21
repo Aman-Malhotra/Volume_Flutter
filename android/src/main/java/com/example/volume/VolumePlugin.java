@@ -72,17 +72,15 @@ public class VolumePlugin implements FlutterPlugin, ActivityAware, MethodCallHan
     }
 
     @Override
-    public void onMethodCall(MethodCall call, Result result) {
+    public void onMethodCall(MethodCall call, @NonNull Result result) {
         if (call.method.equals("controlVolume")) {
             int i = call.argument("streamType");
             streamType = i;
             controlVolume(i);
         } else if (call.method.equals("getMaxVol")) {
             result.success(getMaxVol());
-//            getMaxVol();
         } else if (call.method.equals("getVol")) {
             result.success(getVol());
-//            getVol();
         } else if (call.method.equals("setVol")) {
             int i = call.argument("newVol");
             setVol(i);
@@ -91,25 +89,25 @@ public class VolumePlugin implements FlutterPlugin, ActivityAware, MethodCallHan
         }
     }
 
-    void controlVolume(int i) {
+    private void controlVolume(int i) {
         this.activity.setVolumeControlStream(i);
     }
 
-    void initAudioManager() {
+    private void initAudioManager() {
         audioManager = (AudioManager) this.activity.getApplicationContext().getSystemService(Context.AUDIO_SERVICE);
     }
 
-    int getMaxVol() {
+    private int getMaxVol() {
         initAudioManager();
         return audioManager.getStreamMaxVolume(streamType);
     }
 
-    int getVol() {
+    private int getVol() {
         initAudioManager();
         return audioManager.getStreamVolume(streamType);
     }
 
-    int setVol(int i) {
+    private int setVol(int i) {
         initAudioManager();
         audioManager.setStreamVolume(streamType, i, AudioManager.FLAG_SHOW_UI);
         return audioManager.getStreamVolume(streamType);
