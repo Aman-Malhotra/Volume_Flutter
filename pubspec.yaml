@@ -10,7 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  system_shortcuts: ^0.1.1
+  system_shortcuts: #^0.1.1
+    git: https://github.com/tmarkmann/SystemShortcutsFlutter.git
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
