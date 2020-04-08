@@ -1,3 +1,9 @@
+## 0.1.2
+
+Never resolving native calls resolved
+Github contibution by - [geisterfurz007](https://github.com/geisterfurz007)
+
+
 ## 0.1.1
 
 Android X Issues Resolved 
