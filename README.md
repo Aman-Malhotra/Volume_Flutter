@@ -68,20 +68,6 @@ class _MyAppState extends State<MyApp> {
   }
   // To implement the volume Up and volume Down button press programatically.
   
-  FlatButton(
-    child: Text("Vol Up"),
-    onPressed: (){
-      Volume.volUp();// Consecutively increasing the volume by 1 unit.
-      updateVolumes();
-    },
-  ),
-  FlatButton(
-    child: Text("Vol Down"),
-    onPressed: (){
-      Volume.volDown();// Consecutively decrease the volume by 1 unit.
-      updateVolumes();
-    },
-  )
 ```
 
 ## Getting Started
