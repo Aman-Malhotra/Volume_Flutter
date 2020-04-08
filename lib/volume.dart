@@ -93,9 +93,9 @@ class Volume {
   /// Implementaion :- 
   /// 
   /// Volume.volUp()
-  static Future<Null> volUp() async{
-    await SystemShortcuts.volUp();
-  }
+  // static Future<Null> volUp() async{
+  //   await SystemShortcuts.volUp();
+  // }
 
   /// Press VolumeDown button programatically.
   /// It returns a null.
@@ -103,9 +103,9 @@ class Volume {
   /// Implementaion :- 
   /// 
   /// Volume.volDown()
-  static Future<Null> volDown() async{
-    await SystemShortcuts.volDown();
-  }
+  // static Future<Null> volDown() async{
+  //   await SystemShortcuts.volDown();
+  // }
 }
 
 int _getInt(AudioManager audioManager) {
