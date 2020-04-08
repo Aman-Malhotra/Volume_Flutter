@@ -99,20 +99,20 @@ class _MyAppState extends State<MyApp> {
                     )
                   : Container(),
 
-              FlatButton(
-                child: Text("Vol Up"),
-                onPressed: (){
-                  Volume.volUp();
-                  updateVolumes();
-                },
-              ),
-              FlatButton(
-                child: Text("Vol Down"),
-                onPressed: (){
-                  Volume.volDown();
-                  updateVolumes();
-                },
-              )
+              // FlatButton(
+              //   child: Text("Vol Up"),
+              //   onPressed: (){
+              //     Volume.volUp();
+              //     updateVolumes();
+              //   },
+              // ),
+              // FlatButton(
+              //   child: Text("Vol Down"),
+              //   onPressed: (){
+              //     Volume.volDown();
+              //     updateVolumes();
+              //   },
+              // )
             ],
           ),
         ),
