@@ -30,13 +30,13 @@ AudioManager.STREAM_NOTIFICATION     -> Controll NOTIFICATION Volume
 
 > await Volume.setVol(int i); // Max value of i is less than Volume.getMaxVol
 
-### Press Volume Up button programatically 
+<!-- ### Press Volume Up button programatically 
 
 > Volume.volUp(); // press volUp key.
 
 ### Press Volume Down button programatically 
 
-> Volume.volDown(); // press volDown key.
+> Volume.volDown(); // press volDown key. -->
 
 # Usage
 ```
