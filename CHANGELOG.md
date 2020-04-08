@@ -1,3 +1,9 @@
+## 0.1.1
+
+Android X Issues Resolved 
+Github contibution by - [Thorben Markmann](https://github.com/tmarkmann)
+
+
 ## 0.1.0
 
 Just Version Upgrade 
