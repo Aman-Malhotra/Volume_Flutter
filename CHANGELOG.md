@@ -1,3 +1,9 @@
+## 0.1.3
+
+Removed volUp () and volDown() functions . 
+Change volume using setVol function . 
+
+
 ## 0.1.2
 
 Never resolving native calls resolved
