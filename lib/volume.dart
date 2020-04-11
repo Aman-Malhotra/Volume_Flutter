@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:system_shortcuts/system_shortcuts.dart';
 
-/// AudioManager Streams control the type of volume the getVol and setVol fucntion will control.
+/// AudioManager Streams control the type of volume the getVol and setVol function will control.
 enum AudioManager {
   /// Controls the Voice Call volume
   STREAM_VOICE_CALL,
@@ -20,7 +20,15 @@ enum AudioManager {
   STREAM_ALARM,
 
   /// Controls the notification volume
-  STREAM_NOTIFICATION,
+  STREAM_NOTIFICATION
+}
+
+
+enum ShowVolumeUI{
+  /// HIDE System UI while changing volume,
+  SHOW,
+  /// HIDE System UI while changing volume,
+  HIDE
 }
 
 /// You can control VoiceCall, System, Ringer, Media, Alarm, Notification
@@ -35,12 +43,12 @@ enum AudioManager {
 class Volume {
   static const MethodChannel _channel = const MethodChannel('volume');
 
-  /// Pass any AudioManager Stream as a paremeter to this fucntion and the
-  /// volume buttons and setVol ( int ) function will control that particular volume.
+  /// Pass any AudioManager Stream as a parameter to this function and the
+  /// volume buttons and setVol (...) function will control that particular volume.
   static Future<Null> controlVolume(AudioManager audioManager) async {
     Map<String, int> map = <String, int>{};
     map.putIfAbsent("streamType", () {
-      return _getInt(audioManager);
+      return _getStreamInt(audioManager);
     });
     await _channel.invokeMethod('controlVolume', map);
     return null;
@@ -70,37 +78,44 @@ class Volume {
     return vol;
   }
 
-  /// Call this funtion with an integer value to set the volume of the selected
+  /// Call this function with an integer value to set the volume of the selected.
+  /// OPTIONAL PARAMETER [ShowVolumeUI showVolumeUI]
+  /// to show or hide system Volume UI while changing the volume.
   /// AudioManager stream but value should be less then value returned by getMaxVol getter
   ///
   /// Can be implemented as :-
   ///
-  /// await Volume.setVol ( int i );
+  /// await Volume.setVol ( int i, ShowVolumeUI showVolumeUI );
   ///
   /// where value of 'i' is less then Volume.getMaxVol
-  static Future<int> setVol(int i) async {
+  ///
+  /// value of showVolumeUI can have two values [ShowVolumeUI.SHOW] and [ShowVolumeUI.HIDE]
+  static Future<int> setVol(int i, {ShowVolumeUI showVolumeUI = ShowVolumeUI.SHOW}) async {
     Map<String, int> map = <String, int>{};
     map.putIfAbsent("newVol", () {
       return i;
+    });
+    map.putIfAbsent("showVolumeUiFlag", () {
+      return _getShowVolumeUiInt(showVolumeUI);
     });
     int vol = await _channel.invokeMethod('setVol', map);
     return vol;
   }
 
-  /// Press VolumeUp button programatically.
+  /// Press VolumeUp button programmatically.
   /// It returns a null.
   /// 
-  /// Implementaion :- 
+  /// Implementation :-
   /// 
   /// Volume.volUp()
   // static Future<Null> volUp() async{
   //   await SystemShortcuts.volUp();
   // }
 
-  /// Press VolumeDown button programatically.
+  /// Press VolumeDown button programmatically.
   /// It returns a null.
   /// 
-  /// Implementaion :- 
+  /// Implementation :-
   /// 
   /// Volume.volDown()
   // static Future<Null> volDown() async{
@@ -108,7 +123,16 @@ class Volume {
   // }
 }
 
-int _getInt(AudioManager audioManager) {
+int _getShowVolumeUiInt(ShowVolumeUI showVolumeUI){
+  switch(showVolumeUI){
+    case ShowVolumeUI.SHOW:
+      return 1;
+    case ShowVolumeUI.HIDE:
+      return 0;
+  }
+}
+
+int _getStreamInt(AudioManager audioManager) {
   switch (audioManager) {
     case AudioManager.STREAM_VOICE_CALL:
       return 0;

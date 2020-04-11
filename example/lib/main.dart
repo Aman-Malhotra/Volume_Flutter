@@ -12,7 +12,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   AudioManager audioManager;
   int maxVol, currentVol;
-
+  ShowVolumeUI showVolumeUI = ShowVolumeUI.SHOW;
   
   @override
   void initState() {
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   setVol(int i) async {
-    await Volume.setVol(i);
+    await Volume.setVol(i, showVolumeUI: showVolumeUI);
   }
 
   @override
@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               DropdownButton(
                 value: audioManager,
@@ -84,6 +84,37 @@ class _MyAppState extends State<MyApp> {
                     audioManager = aM;
                   });
                   await Volume.controlVolume(aM);
+                },
+              ),
+              ToggleButtons(
+                // renderBorder: false,
+                borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text(
+                      "Show UI",
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text(
+                      "Hide UI",
+                    ),
+                  ),
+                ],
+                isSelected: [
+                  showVolumeUI == ShowVolumeUI.SHOW,
+                  showVolumeUI == ShowVolumeUI.HIDE
+                ],
+                onPressed: (int i){
+                  setState(() {
+                    if(i == 0){
+                      showVolumeUI = ShowVolumeUI.SHOW;
+                    }else if (i == 1){
+                      showVolumeUI = ShowVolumeUI.HIDE;
+                    }
+                  });
                 },
               ),
               (currentVol != null || maxVol != null)

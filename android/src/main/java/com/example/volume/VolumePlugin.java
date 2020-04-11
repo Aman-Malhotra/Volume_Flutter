@@ -85,7 +85,8 @@ public class VolumePlugin implements FlutterPlugin, ActivityAware, MethodCallHan
             result.success(getVol());
         } else if (call.method.equals("setVol")) {
             int i = call.argument("newVol");
-            setVol(i);
+            int showUiFlag = call.argument("showVolumeUiFlag");
+            setVol(i,showUiFlag);
             result.success(0);
         } else {
             result.notImplemented();
@@ -110,9 +111,9 @@ public class VolumePlugin implements FlutterPlugin, ActivityAware, MethodCallHan
         return audioManager.getStreamVolume(streamType);
     }
 
-    private int setVol(int i) {
+    private int setVol(int i, int showVolumeUiFlag) {
         initAudioManager();
-        audioManager.setStreamVolume(streamType, i, AudioManager.FLAG_SHOW_UI);
+        audioManager.setStreamVolume(streamType, i, showVolumeUiFlag);
         return audioManager.getStreamVolume(streamType);
     }
 }
