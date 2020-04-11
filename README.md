@@ -38,7 +38,7 @@ ShowVolumeUI.HIDE                    -> Do not show system volume UI while chang
 
 > Max value of i is less than or equal to Volume.getMaxVol. 
 
-> Parameter showVolumeUI is optional parameter which defaults to ShowVolumeUI.SHOW.
+> showVolumeUI is optional parameter which defaults to ShowVolumeUI.SHOW.
 
 <!-- ### Press Volume Up button programatically 
 
