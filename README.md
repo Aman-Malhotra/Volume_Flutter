@@ -12,6 +12,12 @@ AudioManager.STREAM_MUSIC            -> Controll MEDIA Volume
 AudioManager.STREAM_ALARM            -> Controll ALARM Volume
 AudioManager.STREAM_NOTIFICATION     -> Controll NOTIFICATION Volume
 ```
+
+# Show and Hide System UI
+```
+ShowVolumeUI.SHOW **(DEFAULT)**      -> Show system volume UI while changing volume 
+ShowVolumeUI.HIDE                    -> Do not show system volume UI while changind volume 
+```
 # Functions and getters
 
 ### Volume Buttons will affect this volume when in app
@@ -28,7 +34,7 @@ AudioManager.STREAM_NOTIFICATION     -> Controll NOTIFICATION Volume
 
 ### Set volume for the stream passed to controlVolume() function
 
-> await Volume.setVol(int i); // Max value of i is less than Volume.getMaxVol
+> await Volume.setVol(int i, {ShowVolumeUI showVolumeUI}); // Max value of i is less than Volume.getMaxVol.Parameter showVolumeUI is optional parameter which defaults to ShowVolumeUI.SHOW.
 
 <!-- ### Press Volume Up button programatically 
 
@@ -64,19 +70,10 @@ class _MyAppState extends State<MyApp> {
   }
 
   setVol(int i) async {
-    await Volume.setVol(i);
+    await Volume.setVol(i, showVolumeUI: ShowVolumeUI.SHOW);
+    // or 
+    // await Volume.setVol(i, showVolumeUI: ShowVolumeUI.HIDE);
   }
   // To implement the volume Up and volume Down button press programatically.
   
 ```
-
-## Getting Started
-
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.io/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.

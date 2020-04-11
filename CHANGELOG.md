@@ -1,3 +1,7 @@
+## 0.1.4
+
+Added option to show and hide system volume UI while changing volume levels.
+
 ## 0.1.3
 
 Removed volUp () and volDown() functions . 
