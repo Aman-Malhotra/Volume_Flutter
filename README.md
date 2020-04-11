@@ -56,12 +56,12 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    // Make this call in initState() function in the root widgte of your app
-    initPlatformState();
+    audioManager = AudioManager.STREAM_SYSTEM;
+    initAudioStreamType();
+    updateVolumes();
   }
 
-  Future<void> initPlatformState() async {
-    // pass any stream as parameter as per requirement
+  Future<void> initAudioStreamType() async {
     await Volume.controlVolume(AudioManager.STREAM_SYSTEM);
   }
 
