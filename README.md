@@ -15,8 +15,8 @@ AudioManager.STREAM_NOTIFICATION     -> Controll NOTIFICATION Volume
 
 # Show and Hide System UI
 ```
-ShowVolumeUI.SHOW **(DEFAULT)**      -> Show system volume UI while changing volume 
-ShowVolumeUI.HIDE                    -> Do not show system volume UI while changind volume 
+ShowVolumeUI.SHOW (DEFAULT)          -> Show system volume UI while changing volume 
+ShowVolumeUI.HIDE                    -> Do not show system volume UI while changing volume 
 ```
 # Functions and getters
 
