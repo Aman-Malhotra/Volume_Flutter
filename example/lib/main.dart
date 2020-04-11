@@ -18,11 +18,11 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     audioManager = AudioManager.STREAM_SYSTEM;
-    initPlatformState();
+    initAudioStreamType();
     updateVolumes();
   }
 
-  Future<void> initPlatformState() async {
+  Future<void> initAudioStreamType() async {
     await Volume.controlVolume(AudioManager.STREAM_SYSTEM);
   }
 
