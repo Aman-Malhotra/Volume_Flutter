@@ -1,3 +1,7 @@
+## 1.0.1
+
+Removed unused issues
+
 ## 1.0.0
 
 Updated pubspec for system_shortcuts package version

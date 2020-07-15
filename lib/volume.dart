@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:system_shortcuts/system_shortcuts.dart';
 
 /// AudioManager Streams control the type of volume the getVol and setVol function will control.
 enum AudioManager {
@@ -23,22 +22,22 @@ enum AudioManager {
   STREAM_NOTIFICATION
 }
 
-
-enum ShowVolumeUI{
+enum ShowVolumeUI {
   /// HIDE System UI while changing volume,
   SHOW,
+
   /// HIDE System UI while changing volume,
   HIDE
 }
 
 /// You can control VoiceCall, System, Ringer, Media, Alarm, Notification
 /// volume and get the max possible volumes for the respective.
-/// 
+///
 /// Call the controlVolume ( AudioManager ) function in initState ()
-/// 
+///
 /// to to make sure the setVol ( int ) , getMaxVol, and getVol control
-/// 
-/// the volume passed as the parameter to the controlVolume ( AudioManager ) 
+///
+/// the volume passed as the parameter to the controlVolume ( AudioManager )
 /// function.
 class Volume {
   static const MethodChannel _channel = const MethodChannel('volume');
@@ -90,7 +89,8 @@ class Volume {
   /// where value of 'i' is less then Volume.getMaxVol
   ///
   /// value of showVolumeUI can have two values [ShowVolumeUI.SHOW] and [ShowVolumeUI.HIDE]
-  static Future<int> setVol(int i, {ShowVolumeUI showVolumeUI = ShowVolumeUI.SHOW}) async {
+  static Future<int> setVol(int i,
+      {ShowVolumeUI showVolumeUI = ShowVolumeUI.SHOW}) async {
     Map<String, int> map = <String, int>{};
     map.putIfAbsent("newVol", () {
       return i;
@@ -104,9 +104,9 @@ class Volume {
 
   /// Press VolumeUp button programmatically.
   /// It returns a null.
-  /// 
+  ///
   /// Implementation :-
-  /// 
+  ///
   /// Volume.volUp()
   // static Future<Null> volUp() async{
   //   await SystemShortcuts.volUp();
@@ -114,21 +114,23 @@ class Volume {
 
   /// Press VolumeDown button programmatically.
   /// It returns a null.
-  /// 
+  ///
   /// Implementation :-
-  /// 
+  ///
   /// Volume.volDown()
   // static Future<Null> volDown() async{
   //   await SystemShortcuts.volDown();
   // }
 }
 
-int _getShowVolumeUiInt(ShowVolumeUI showVolumeUI){
-  switch(showVolumeUI){
+int _getShowVolumeUiInt(ShowVolumeUI showVolumeUI) {
+  switch (showVolumeUI) {
     case ShowVolumeUI.SHOW:
       return 1;
     case ShowVolumeUI.HIDE:
       return 0;
+    default:
+      return 1;
   }
 }
 
