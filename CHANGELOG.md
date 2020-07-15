@@ -1,3 +1,7 @@
+## 1.0.0
+
+Updated pubspec for system_shortcuts package version
+
 ## 0.1.4
 
 Added option to show and hide system volume UI while changing volume levels.
