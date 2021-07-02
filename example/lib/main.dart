@@ -10,8 +10,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  AudioManager audioManager;
-  int maxVol, currentVol;
+  late AudioManager audioManager;
+  int? maxVol, currentVol;
   ShowVolumeUI showVolumeUI = ShowVolumeUI.SHOW;
   
   @override
@@ -78,12 +78,12 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ],
                 isDense: true,
-                onChanged: (AudioManager aM) async {
+                onChanged: (AudioManager? aM) async {
                   print(aM.toString());
                   setState(() {
-                    audioManager = aM;
+                    audioManager = aM!;
                   });
-                  await Volume.controlVolume(aM);
+                  await Volume.controlVolume(aM!);
                 },
               ),
               ToggleButtons(
@@ -119,9 +119,9 @@ class _MyAppState extends State<MyApp> {
               ),
               (currentVol != null || maxVol != null)
                   ? Slider(
-                      value: currentVol / 1.0,
+                      value: currentVol! / 1.0,
                       divisions: maxVol,
-                      max: maxVol / 1.0,
+                      max: maxVol! / 1.0,
                       min: 0,
                       onChanged: (double d) {
                         setVol(d.toInt());
