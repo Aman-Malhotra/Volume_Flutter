@@ -45,7 +45,7 @@ class Volume {
   /// Pass any AudioManager Stream as a parameter to this function and the
   /// volume buttons and setVol (...) function will control that particular volume.
   static Future<Null> controlVolume(AudioManager audioManager) async {
-    Map<String, int> map = <String, int>{};
+    Map<String, int?> map = <String, int?>{};
     map.putIfAbsent("streamType", () {
       return _getStreamInt(audioManager);
     });
@@ -60,8 +60,8 @@ class Volume {
   /// Can be implemented like this :-
   ///
   /// int maxVol = await Volume.getMaxVol;
-  static Future<int> get getMaxVol async {
-    int maxVol = await _channel.invokeMethod('getMaxVol');
+  static Future<int?> get getMaxVol async {
+    int? maxVol = await _channel.invokeMethod('getMaxVol');
     return maxVol;
   }
 
@@ -72,8 +72,8 @@ class Volume {
   /// Can be implemented like this :-
   ///
   /// int currentVol = await Volume.getVol;
-  static Future<int> get getVol async {
-    int vol = await _channel.invokeMethod('getVol');
+  static Future<int?> get getVol async {
+    int? vol = await _channel.invokeMethod('getVol');
     return vol;
   }
 
@@ -89,7 +89,7 @@ class Volume {
   /// where value of 'i' is less then Volume.getMaxVol
   ///
   /// value of showVolumeUI can have two values [ShowVolumeUI.SHOW] and [ShowVolumeUI.HIDE]
-  static Future<int> setVol(int i,
+  static Future<int?> setVol(int i,
       {ShowVolumeUI showVolumeUI = ShowVolumeUI.SHOW}) async {
     Map<String, int> map = <String, int>{};
     map.putIfAbsent("newVol", () {
@@ -98,7 +98,7 @@ class Volume {
     map.putIfAbsent("showVolumeUiFlag", () {
       return _getShowVolumeUiInt(showVolumeUI);
     });
-    int vol = await _channel.invokeMethod('setVol', map);
+    int? vol = await _channel.invokeMethod('setVol', map);
     return vol;
   }
 
@@ -134,7 +134,7 @@ int _getShowVolumeUiInt(ShowVolumeUI showVolumeUI) {
   }
 }
 
-int _getStreamInt(AudioManager audioManager) {
+int? _getStreamInt(AudioManager audioManager) {
   switch (audioManager) {
     case AudioManager.STREAM_VOICE_CALL:
       return 0;
